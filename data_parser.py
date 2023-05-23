@@ -148,8 +148,10 @@ class Data:
             sentences.append(c["raw"])
 
         states = get_state_list(sentences, amounts)
+        print("----", self.data[-1]["input"]["amount"])
         for i in range(len(states)):
             self.data[-1]["conv"][i]["state"] = cp.deepcopy(states[i])
+            print(self.data[-1]["conv"][i]["raw"], self.data[-1]["conv"][i]["state"])
 
         if check_validity_of_parsing(self.data[-1]["conv"][-1]["state"], self.data[-1]["output"][0]) and self.data[-1] != {}:
             # print("CORRECT")
